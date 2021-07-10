@@ -1,0 +1,17 @@
+#include "define.h"
+#include "messages.h"
+#include "keyboard.h"
+#include "_Timers.h"
+#include "AS5043.h"
+#ifndef __STM32_TURNSTILE
+#define __STM32_TURNSTILE
+
+/*typedef struct{
+	unsigned char alarm;
+	unsigned char turnstile_mode;
+}Turnstile_InitTypeDef;*/
+
+//------------------------------------------------------------------
+void FSM_turnstile(Turnstile_InitTypeDef *Turnstile_InitStruct);
+unsigned char FSMlocation(AS5043_InitTypeDef* AS5043_InitStruct);
+#endif

@@ -1,0 +1,3 @@
+#define LED_BLINK_BLUE	100
+#define LED_BLINK_GREEN	50
+#define LED_BLINK_PORTS	100

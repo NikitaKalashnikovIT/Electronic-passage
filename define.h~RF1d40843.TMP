@@ -1,0 +1,53 @@
+#include "stm32f10x_conf.h"
+#include "AS5043.h"
+#ifndef __STM32_DEF
+#define __STM32_DEF
+extern GPIO_InitTypeDef GPIO_InitStructure;
+//------------------------------------------------------------------------------
+#define DI0									GPIOA, GPIO_Pin_8
+#define DI1									GPIOA, GPIO_Pin_11
+#define DI2									GPIOA, GPIO_Pin_12
+#define DI3									GPIOA, GPIO_Pin_15
+#define DI4									GPIOB, GPIO_Pin_6
+#define DI5									GPIOB, GPIO_Pin_7
+#define DI6									GPIOB, GPIO_Pin_8
+#define DI7									GPIOB, GPIO_Pin_9
+
+#define DO0									GPIOA, GPIO_Pin_0
+#define DO1									GPIOA, GPIO_Pin_1
+#define DO2									GPIOA, GPIO_Pin_4
+#define DO3									GPIOA, GPIO_Pin_5
+#define DO4									GPIOA, GPIO_Pin_6
+#define DO5									GPIOA, GPIO_Pin_7
+#define DO6									GPIOB, GPIO_Pin_0
+#define DO7									GPIOB, GPIO_Pin_1
+//
+#define vTIME_PERMIT				400														//время прохода одного человека
+
+// определение портов кнопок
+#define BUTTON_DIR1					DI0						// кнопка "Направление 1"
+#define BUTTON_DIR2					DI2					  // кнопка "Направление 2"
+#define BUTTON_CONST				DI1					  // кнопка "Доп."
+
+//
+#define BEEP_ON							GPIOC, GPIO_Pin_13
+#define FACT_PASS1					GPIOB, GPIO_Pin_3
+#define FACT_PASS2					GPIOB, GPIO_Pin_4
+//определение режимов турникета
+#define SINGLE_PASS1    0																// однократный проход в направлении 1
+#define ACS_PASS1       1																// проход от СКУД в направлении 1
+#define CONST_PASS1     2																// групповой проход в направлении 1
+#define SINGLE_PASS2    4																// однократный проход в направлении 2
+#define ACS_PASS2       5																// проход от СКУД в направлении 2
+#define CONST_PASS2     6																// групповой проход в направлении 2
+
+#define vDI15			(GPIOA->IDR & GPIO_Pin_15)
+
+//--------------------------------------------------------------------------------------
+typedef struct{
+	unsigned char alarm;
+	unsigned char turnstile_mode;
+	short location;
+}Turnstile_InitTypeDef;
+
+#endif
